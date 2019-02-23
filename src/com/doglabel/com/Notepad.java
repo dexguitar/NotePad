@@ -42,7 +42,7 @@ public class Notepad {
             }
         }
 
-//    Shrinking the notes array if the last 2 element are null
+//    Shrinking the notes array if the last 2 elements are null
         if (null == this.notes[this.notes.length - 1] && null == this.notes[this.notes.length - 2]) {
             this.notes = Arrays.copyOf(this.notes, this.notes.length - 2);
         }
