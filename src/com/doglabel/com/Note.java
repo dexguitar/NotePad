@@ -2,13 +2,13 @@ package com.doglabel.com;
 
 public class Note {
 
-//    PROPERTIES
+    //    PROPERTIES
     private int id;
     private String title;
     private String body;
 
 
-//    CONSTRUCTOR
+    //    CONSTRUCTOR
     public Note(int id, String title, String body) {
         this.id = id;
         this.title = title;
@@ -16,7 +16,7 @@ public class Note {
     }
 
 
-//    GETTERS & SETTERS
+    //    GETTERS & SETTERS
     public int getId() {
         return id;
     }
@@ -46,7 +46,7 @@ public class Note {
         this.body = body;
     }
 
-//    METHODS
+    //    METHODS
     @Override
     public String toString() {
         return this.getTitle() + " " + this.getBody();

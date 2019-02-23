@@ -4,17 +4,17 @@ import java.util.Arrays;
 
 public class Notepad {
 
-//    PROPERTIES
+    //    PROPERTIES
     private Note[] notes = new Note[5];
 
 
-//    CONSTRUCTOR
+    //    CONSTRUCTOR
     public Notepad() {
         this.notes = notes;
     }
 
 
-//    METHODS
+    //    METHODS
     public String getNote(int id) {
         return this.notes[id].getTitle() + " - " + this.notes[id].getBody();
     }
@@ -71,6 +71,9 @@ public class Notepad {
         }
 
         return sb;
+
+// !!! Remove the stringbuilder if using toString() !!!
+
 //        String newStr = "";
 //
 //        for (Note note: this.notes) {
