@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Notepad {
 
     private static final int INIT_NOTEPAD_SIZE = 5;
-    public static int counter = 0;
+    public int counter;
 
     //    PROPERTIES
     private Note[] notes;
@@ -18,45 +18,53 @@ public class Notepad {
 
 
     //    METHODS
-    public String getNote(String title) {
-        Note newNote = null;
+    public Note getNote(String title) {
+        Note existingNote = new Note();
 
         if (null == title) {
-            return "No such note";
-        } else {
-            for (Note note: notes) {
-                if (note.getTitle() == title) {
-                    newNote = note;
+            existingNote = new Note("No such note", "in the notepad");
+        }
+
+        for (Note note: notes) {
+            if (note.getTitle().equals(title)) {
+                    existingNote = note;
                     break;
-                }
+                } else {
+                existingNote = new Note("No such note", "in the notepad");
+                break;
             }
         }
 
-        return newNote.toString();
+        return existingNote;
     }
 
 
     public void addNote(String title, String body) {
         Note newNote = new Note(title, body);
-        Note[] newNoteArr = new Note[this.notes.length * 2];
+
+//        Is the last element NOT null?
         if (null != this.notes[this.notes.length - 1]) {
+
 //            Expanding the notes array if the last element is NOT null
+            Note[] newNoteArr = new Note[this.notes.length * 2];
             System.arraycopy(this.notes, 0, newNoteArr, 0, this.notes.length);
             newNoteArr[newNoteArr.length / 2] = newNote;
+
 //            Setting the counter to match the new array
-            counter = (newNoteArr.length / 2) + 1;
+            counter = (newNoteArr.length / 2);
             this.notes = newNoteArr;
-        } else {
-            this.notes[counter] = newNote;
-            counter++;
+
         }
+
+        this.notes[counter] = newNote;
+        counter++;
     }
 
 
     public void deleteNote(String title) {
-        for (int i = 0; i < this.notes.length; i++) {
-            if (this.notes[i].getTitle() == title) {
-                this.notes[i] = null;
+        for (int i = 0; i < notes.length; i++) {
+            if (notes[i].getTitle().equals(title)) {
+                notes[i] = null;
 //    Shifting elements to the left
                 for (int j = i; j < notes.length - 1; j++) {
                     notes[j] = notes[j + 1];
@@ -65,11 +73,11 @@ public class Notepad {
             }
         }
 
-//    Shrinking the notes array if the last 2 element are null
-        Note[] newNoteArr = new Note[this.notes.length / 2];
-        if (null == this.notes[(this.notes.length / 4) + 1]) {
-            System.arraycopy(this.notes, 0, newNoteArr, 0, this.notes.length / 2);
-            this.notes = newNoteArr;
+//    Shrinking the notes array if the quarter is empty
+        if (null == notes[(notes.length / 4) + 1]) {
+            Note[] newNoteArr = new Note[notes.length / 2];
+            System.arraycopy(notes, 0, newNoteArr, 0, notes.length / 2);
+            notes = newNoteArr;
         }
 
 //        Decrement the counter
@@ -78,16 +86,16 @@ public class Notepad {
 
 
     public void editNote(String title, String body) {
-        Note newNote = null;
-//        Search note by title
+        Note existingNote = new Note();
+
         for (int i = 0; i < notes.length; i++) {
-            if (notes[i].getTitle() == title) {
-                newNote = notes[i];
+            if (notes[i].getTitle().equals(title)) {
+                existingNote = notes[i];
                 break;
             }
         }
-//        Set new body for note
-        newNote.setBody(body);
+
+        existingNote.setBody(body);
     }
 
 
@@ -106,15 +114,6 @@ public class Notepad {
         }
 
         return sb;
-//        String newStr = "";
-//
-//        for (Note note: this.notes) {
-//            if (null == note) { break; }
-//            newStr += note.toString();
-//            newStr += "\n";
-//        }
-//
-//        return newStr;
 
     }
 

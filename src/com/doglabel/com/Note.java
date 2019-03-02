@@ -7,7 +7,11 @@ public class Note {
     private String body;
 
 
-    //    CONSTRUCTOR
+    //    CONSTRUCTORS
+    public Note() {
+
+    }
+
     public Note(String title, String body) {
         this.title = title;
         this.body = body;
