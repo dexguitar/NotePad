@@ -9,17 +9,15 @@ public class Main {
         Notepad notepad = new Notepad();
 
 //        Add 15 notes
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             notepad.addNote("title" + i, "body" + i);
         }
 
         System.out.println(notepad.showAllNotes());
 
+        notepad.deleteNote("title1");
         notepad.deleteNote("title3");
-
-        System.out.println(notepad.showAllNotes());
-
-        notepad.editNote("title2", "body222");
+        notepad.deleteNote("title5");
 
         System.out.println(notepad.showAllNotes());
 

@@ -63,21 +63,11 @@ public class Notepad {
 
     public void deleteNote(String title) {
         for (int i = 0; i < notes.length; i++) {
-            if (notes[i].getTitle().equals(title)) {
+            if (notes[i].getTitle().equals(title) && i != notes.length - 1) {
+                System.arraycopy(notes, i + 1, notes, i, notes.length - i - 1);
+            } else if (notes[i].getTitle().equals(title) && i == notes.length - 1) {
                 notes[i] = null;
-//    Shifting elements to the left
-                for (int j = i; j < notes.length - 1; j++) {
-                    notes[j] = notes[j + 1];
-                }
-                break;
             }
-        }
-
-//    Shrinking the notes array if the quarter is empty
-        if (null == notes[(notes.length / 4) + 1]) {
-            Note[] newNoteArr = new Note[notes.length / 2];
-            System.arraycopy(notes, 0, newNoteArr, 0, notes.length / 2);
-            notes = newNoteArr;
         }
 
 //        Decrement the counter
