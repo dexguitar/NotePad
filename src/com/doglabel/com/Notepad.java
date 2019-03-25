@@ -18,23 +18,16 @@ public class Notepad {
 
 
     //    METHODS
-    public Note getNote(String title) {
-        Note existingNote = null;
+    public String getNote(String title) {
 
-        if (null == title) {
-            return null;
-        }
-
-        for (Note note: notes) {
-            if (note.getTitle().equals(title)) {
-                    existingNote = note;
-                return existingNote;
-                } else {
-                return null;
+        for (Note n: notes) {
+            if (n.getTitle().equals(title)) {
+                Note foundNote = new Note(n.getTitle(), n.getBody());
+                return foundNote.toString();
             }
         }
 
-        return existingNote;
+        return null;
     }
 
 
@@ -74,8 +67,8 @@ public class Notepad {
         }
 
 //        Shrink the array in 1/4 if the half is empty
-        Note[] newArr = new Note[notes.length * 3 / 4];
         if (null == notes[notes.length / 2]) {
+            Note[] newArr = new Note[notes.length * 3 / 4];
             System.arraycopy(notes, 0, newArr, 0, notes.length / 2);
             notes = newArr;
         }
