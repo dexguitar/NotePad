@@ -26,7 +26,7 @@ public class Main {
         notepad.addNote("title15", "body15");
 
         notepad.deleteNote("title13");
-        notepad.deleteNote("title8");
+//        notepad.deleteNote("title8");
 
         System.out.println(notepad.showAllNotes());
 

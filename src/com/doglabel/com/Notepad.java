@@ -73,6 +73,13 @@ public class Notepad {
             }
         }
 
+//        Shrink the array in 1/4 if the half is empty
+        Note[] newArr = new Note[notes.length * 3 / 4];
+        if (null == notes[notes.length / 2]) {
+            System.arraycopy(notes, 0, newArr, 0, notes.length / 2);
+            notes = newArr;
+        }
+
 //        Decrement the counter
         counter--;
     }
