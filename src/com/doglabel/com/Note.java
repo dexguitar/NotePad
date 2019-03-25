@@ -2,31 +2,19 @@ package com.doglabel.com;
 
 public class Note {
 
-//    PROPERTIES
-    private int id;
+    //    PROPERTIES
     private String title;
     private String body;
 
 
-//    CONSTRUCTOR
-    public Note(int id, String title, String body) {
-        this.id = id;
+    //    CONSTRUCTORS
+    public Note(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
 
-//    GETTERS & SETTERS
-    public int getId() {
-        return id;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
+    //    GETTERS & SETTERS
     public String getTitle() {
         return title;
     }
@@ -46,10 +34,10 @@ public class Note {
         this.body = body;
     }
 
-//    METHODS
+    //    METHODS
     @Override
     public String toString() {
-        return this.getTitle() + " " + this.getBody();
+        return getTitle() + " " + getBody();
     }
 
 }

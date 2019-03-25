@@ -5,24 +5,33 @@ public class Main {
 
     public static void main(String[] args) {
 
+//        Create a notepad
         Notepad notepad = new Notepad();
 
-        notepad.addNote(0, "title0", "body0");
-        notepad.addNote(1, "title1", "body1");
-        notepad.addNote(2, "title2", "body2");
-        notepad.addNote(3, "title3", "body3");
-        notepad.addNote(4, "title4", "body5");
-        notepad.addNote(5, "title5", "body5");
+//        Add 15 notes
+        for (int i = 0; i < 10; i++) {
+            notepad.addNote("title" + i, "body" + i);
+        }
 
         System.out.println(notepad.showAllNotes());
 
-        System.out.println(notepad.getNoteLength());
+        notepad.deleteNote("title0");
+        notepad.deleteNote("title3");
+        notepad.deleteNote("title9");
 
-        notepad.deleteNote(3);
+        notepad.addNote("title12", "body12");
+        notepad.addNote("title13", "body13");
 
-        System.out.println(notepad.getNoteLength());
+        notepad.addNote("title14", "body14");
+        notepad.addNote("title15", "body15");
 
-        System.out.println(notepad.getNote(2));
+        notepad.deleteNote("title13");
+        System.out.println(notepad.getNote("title1"));
+        System.out.println("\n");
+//        notepad.deleteNote("title8");
+
+        System.out.println(notepad.showAllNotes());
+
     }
 
 
