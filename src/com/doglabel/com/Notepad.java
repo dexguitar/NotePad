@@ -19,19 +19,18 @@ public class Notepad {
 
     //    METHODS
     public Note getNote(String title) {
-        Note existingNote = new Note();
+        Note existingNote = null;
 
         if (null == title) {
-            existingNote = new Note("No such note", "in the notepad");
+            return null;
         }
 
         for (Note note: notes) {
             if (note.getTitle().equals(title)) {
                     existingNote = note;
-                    break;
+                return existingNote;
                 } else {
-                existingNote = new Note("No such note", "in the notepad");
-                break;
+                return null;
             }
         }
 
@@ -48,7 +47,6 @@ public class Notepad {
 //            Expanding the notes array if the last element is NOT null
             Note[] newNoteArr = new Note[this.notes.length * 2];
             System.arraycopy(this.notes, 0, newNoteArr, 0, this.notes.length);
-            newNoteArr[newNoteArr.length / 2] = newNote;
 
 //            Setting the counter to match the new array
             counter = (newNoteArr.length / 2);
@@ -63,10 +61,15 @@ public class Notepad {
 
     public void deleteNote(String title) {
         for (int i = 0; i < notes.length; i++) {
-            if (notes[i].getTitle().equals(title) && i != notes.length - 1) {
-                System.arraycopy(notes, i + 1, notes, i, notes.length - i - 1);
-            } else if (notes[i].getTitle().equals(title) && i == notes.length - 1) {
+            if (null == notes[i]) {
+                continue;
+            } else if (notes[i].getTitle().equals(title)) {
                 notes[i] = null;
+                for (int j = i; j < notes.length - 1; j++) {
+                    notes[j] = notes[j + 1];
+                    notes[j + 1] = null;
+                }
+                break;
             }
         }
 
@@ -76,7 +79,7 @@ public class Notepad {
 
 
     public void editNote(String title, String body) {
-        Note existingNote = new Note();
+        Note existingNote = null;
 
         for (int i = 0; i < notes.length; i++) {
             if (notes[i].getTitle().equals(title)) {

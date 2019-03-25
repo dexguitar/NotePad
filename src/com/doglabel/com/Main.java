@@ -15,9 +15,18 @@ public class Main {
 
         System.out.println(notepad.showAllNotes());
 
-        notepad.deleteNote("title1");
+        notepad.deleteNote("title0");
         notepad.deleteNote("title3");
-        notepad.deleteNote("title5");
+        notepad.deleteNote("title9");
+
+        notepad.addNote("title12", "body12");
+        notepad.addNote("title13", "body13");
+
+        notepad.addNote("title14", "body14");
+        notepad.addNote("title15", "body15");
+
+        notepad.deleteNote("title13");
+        notepad.deleteNote("title8");
 
         System.out.println(notepad.showAllNotes());
 
